@@ -1,8 +1,8 @@
 package com.letscode.battleship;
 
 import java.util.Objects;
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
@@ -18,8 +18,6 @@ public class Main {
     public static String miss = "-";
 
     public static void playerPositions(){
-        System.out.println("Welcome to the battleship");
-        System.out.println("Select your submarine positions");
 
         for(int i = 0 ; i < boardLength; i++){
             System.out.print("Insert x - coord: ");
@@ -35,13 +33,12 @@ public class Main {
             }
             playerBoard[xCoord][yCoord] = sub;
         }
-        playerBoard();
 
     }
 
-    public static void playerBoard(){
+    public static void playerBoard(String playerName){
         System.out.println("---------------------------------------------");
-        System.out.println("Player");
+        System.out.println(playerName);
         System.out.println("---------------------------------------------");
         System.out.println("|   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |");
         System.out.println("---------------------------------------------");
@@ -53,6 +50,26 @@ public class Main {
             }
             System.out.println("\n---------------------------------------------");
         }
+    }
+
+    public static void askPlayerCoordinates(){
+        String message;
+        System.out.print("Row: ");
+        int row = scanner.nextInt();
+        System.out.print("Col: ");
+        int col = scanner.nextInt();
+        if(CPUBoard[row][col] == sub){
+            message = "Shot!";
+            CPUBoard[row][col] = shot;
+        }
+        else if (CPUBoard[row][col] == null){
+            message = "Miss!";
+            CPUBoard[row][col] = miss;
+        }
+        else {
+            message = "ERROR";
+        }
+        System.out.println(message);
     }
 
 
@@ -67,7 +84,6 @@ public class Main {
             CPUBoard[xPosition][yPosition] = sub;
         }
     }
-
 
 
     public static void CPUBoard(){
@@ -93,9 +109,36 @@ public class Main {
         }
     }
 
+    public static void CPUCoordinates(){
+        String message = null;
+        int rowPosition = random.nextInt(9);
+        int colPosition = random.nextInt(9);
+        if(playerBoard[rowPosition][colPosition] == sub){
+            message = "Shot!";
+            playerBoard[rowPosition][colPosition] = shot;
+        }
+        else if (playerBoard[rowPosition][colPosition] == null){
+            message = "Miss!";
+            playerBoard[rowPosition][colPosition] = miss;
+        }
+        System.out.println(message);
+    }
+
     public static void main (String[] args){
+        System.out.println("Welcome to the battleship");
+        System.out.print("Insert your first name: ");
+        String playerName = scanner.next();
+        System.out.println("Select your submarine positions");
         playerPositions();
+        playerBoard(playerName);
         CPUPositions();
+
+        while(true) {
+            askPlayerCoordinates();
+            CPUCoordinates();
+            playerBoard(playerName);
+//            CPUBoard();
+        }
 
 
     }
