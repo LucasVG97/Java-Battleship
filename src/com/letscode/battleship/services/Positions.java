@@ -19,9 +19,16 @@ public class Positions {
         letter = rowLetterBoard(rowChar);
     }
 
-    public static void validColPosition() {
-        Printer.validNumber();
-        number = scanner.nextInt();
+    public static void numberVerification() {
+        do{
+            Printer.enterNumber();
+            while (!scanner.hasNextInt()) {
+                System.out.println("That's not a number!");
+                Printer.enterNumber();
+                scanner.next();
+            }
+            number = scanner.nextInt();
+        } while (number < 0 || number > 9);
     }
 
     public static void playerPositions() {
@@ -45,16 +52,13 @@ public class Positions {
         Printer.enterLetter();
         rowChar = Character.toUpperCase(scanner.next().charAt(0));
         letter = rowLetterBoard(rowChar);
-        Printer.enterNumber();
-        number = scanner.nextInt();
 
         while (letter > 9){
             validRowPosition();
         }
 
-        while (number > 9) {
-            validColPosition();
-        }
+        numberVerification();
+
     }
 
     public static void CPUPositions(){
@@ -69,4 +73,6 @@ public class Positions {
             CPUBoard[xPosition][yPosition] = sub;
         }
     }
+
+
 }
