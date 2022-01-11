@@ -2,7 +2,13 @@
 
 A simple battleship game, made for a challenge of Santander Coders Web FullStack Degree
 
+-Enter your name
 
+-Select your submarine positions
+
+-Guess the CPU coordinates
+
+-Enjoy :video_game:
 
 ## Main Language :computer:
 
@@ -15,7 +21,8 @@ A simple battleship game, made for a challenge of Santander Coders Web FullStack
 ## Squad :handshake:
 
 <div>
-    <span>Lucas Gonçalves - </span><a href="https://github.com/LucasVG97"><img alt="github-icon" height="35" width="35" src="https://github.com/devicons/devicon/blob/master/icons/github/github-original.svg"></a>
+    <span>Lucas Gonçalves </span><a href="https://github.com/LucasVG97"><img alt="github-icon" height="35" width="35" src="https://github.com/devicons/devicon/blob/master/icons/github/github-original.svg"></a>
     <br>
-    <span>Rebeca Rodrigues - </span><a href="https://github.com/rodriguesrebeca"><img alt="github-icon" height="35" width="35" src="https://github.com/devicons/devicon/blob/master/icons/github/github-original.svg"></a>
+    <span>Rebeca Rodrigues </span><a href="https://github.com/rodriguesrebeca"><img alt="github-icon" height="35" width="35" src="https://github.com/devicons/devicon/blob/master/icons/github/github-original.svg"></a>
 </div>
+
