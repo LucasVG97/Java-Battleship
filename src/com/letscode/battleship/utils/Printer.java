@@ -40,8 +40,8 @@ public class Printer {
     }
 
     public static void validNumber(){
-        System.out.println(ANSI_RED + "Please, enter a valid number (0-9)" + ANSI_RESET);
-        System.out.print("Enter the number: ");
+        System.out.println(ANSI_RED + "This is not a number. Please, enter a valid number (0-9)" + ANSI_RESET);
+        System.out.print("Enter the number (0-9): ");
     }
 
     public static void alreadyShipHere(){
@@ -55,5 +55,22 @@ public class Printer {
     public static void coordinates(){
         System.out.println("Select the coordinates");
     }
+
+    public static void shot() {
+        System.out.println(ANSI_PURPLE + "Nice Shot :)" + ANSI_RESET);
+    }
+
+    public static void miss() {
+        System.out.println(ANSI_RED + "You Missed :(" + ANSI_RESET);
+    }
+
+    public static void CPUShot() {
+        System.out.println(ANSI_PURPLE + "CPU Nice Shot!" + ANSI_RESET);
+    }
+
+    public static void CPUMiss() {
+        System.out.println(ANSI_RED + "CPU missed!" + ANSI_RESET);
+    }
+
 
 }

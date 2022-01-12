@@ -13,9 +13,9 @@ public class Coordinates {
     public static String sub = ANSI_YELLOW + "N" + ANSI_RESET;
     public static String shot = ANSI_CYAN + "*" + ANSI_RESET;
     public static String miss = ANSI_WHITE + "-" + ANSI_RESET;
+    public static int col;
 
     public static void CPUCoordinates(){
-        String message;
         int rowPosition;
         int colPosition;
         do{
@@ -24,20 +24,17 @@ public class Coordinates {
         } while(PLAYERBOARD[rowPosition][colPosition] == shot || PLAYERBOARD[rowPosition][colPosition] == miss);
 
         if (PLAYERBOARD[rowPosition][colPosition] == sub){
-            message = "CPU nice Shot!";
+            Printer.CPUShot();
             PLAYERBOARD[rowPosition][colPosition] = shot;
         }
         else{
-            message = "CPU missed!";
+            CPUMiss();
             PLAYERBOARD[rowPosition][colPosition] = miss;
         }
-        System.out.println(message);
     }
 
     public static void askPlayerCoordinates(){
-        String playerMessage;
         Printer.coordinates();
-
         Printer.enterLetter();
         char rowChar = Character.toUpperCase(scanner.next().charAt(0));
         row = rowLetterBoard(rowChar);
@@ -47,37 +44,35 @@ public class Coordinates {
             rowChar = Character.toUpperCase(scanner.next().charAt(0));
             row = rowLetterBoard(rowChar);
         }
-
-        Printer.enterNumber();
-        int col = scanner.nextInt();
-
-        while (col > 9) {
-            Printer.validNumber();
-            col = scanner.nextInt();
-        }
-
+        coordVerification();
         if(CPUBoard[row][col] == shot || CPUBoard[row][col] == miss ){
             do{
                 Printer.invalidMove();
                 Printer.enterLetter();
                 rowChar = Character.toUpperCase(scanner.next().charAt(0));
                 row = rowLetterBoard(rowChar);
-                Printer.enterNumber();
-                col = scanner.nextInt();
-                while (col > 9) {
-                    Printer.validNumber();
-                    col = scanner.nextInt();
-                }
+                coordVerification();
             }while(CPUBoard[row][col] == shot || CPUBoard[row][col] == miss);
         }
         if (CPUBoard[row][col] == sub){
-            playerMessage = "Nice Shot!";
+            Printer.shot();
             CPUBoard[row][col] = shot;
         }
         else{
-            playerMessage = "You missed!";
+            Printer.miss();
             CPUBoard[row][col] = miss;
         }
-        System.out.println(playerMessage);
     }
+
+    public static void coordVerification() {
+        do{
+            Printer.enterNumber();
+            while (!scanner.hasNextInt()) {
+                Printer.validNumber();
+                scanner.next();
+            }
+            col = scanner.nextInt();
+        } while (col < 0 || col > 9);
+    }
+
 }

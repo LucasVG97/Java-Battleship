@@ -23,8 +23,7 @@ public class Positions {
         do{
             Printer.enterNumber();
             while (!scanner.hasNextInt()) {
-                System.out.println("That's not a number!");
-                Printer.enterNumber();
+                Printer.validNumber();
                 scanner.next();
             }
             number = scanner.nextInt();

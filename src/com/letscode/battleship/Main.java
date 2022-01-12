@@ -23,6 +23,7 @@ public class Main {
             Coordinates.askPlayerCoordinates();
             Coordinates.CPUCoordinates();
             GameBoard.playerBoard(playerName);
+            GameBoard.CPUBoard();
             Game.setIsGameOver();
         } while (isGameRunning);
         setWinner(playerName);
