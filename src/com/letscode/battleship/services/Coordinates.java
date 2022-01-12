@@ -13,6 +13,7 @@ public class Coordinates {
     public static String sub = ANSI_YELLOW + "N" + ANSI_RESET;
     public static String shot = ANSI_CYAN + "*" + ANSI_RESET;
     public static String miss = ANSI_WHITE + "-" + ANSI_RESET;
+    public static int col;
 
     public static void CPUCoordinates(){
         String message;
@@ -47,14 +48,7 @@ public class Coordinates {
             rowChar = Character.toUpperCase(scanner.next().charAt(0));
             row = rowLetterBoard(rowChar);
         }
-
-        Printer.enterNumber();
-        int col = scanner.nextInt();
-
-        while (col > 9) {
-            Printer.validNumber();
-            col = scanner.nextInt();
-        }
+        Positions.numberVerification();
 
         if(CPUBoard[row][col] == shot || CPUBoard[row][col] == miss ){
             do{
